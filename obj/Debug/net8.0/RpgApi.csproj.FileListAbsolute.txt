@@ -31,3 +31,4 @@ D:\Lucas\RpgApi\obj\Debug\net8.0\refint\RpgApi.dll
 D:\Lucas\RpgApi\obj\Debug\net8.0\RpgApi.pdb
 D:\Lucas\RpgApi\obj\Debug\net8.0\RpgApi.genruntimeconfig.cache
 D:\Lucas\RpgApi\obj\Debug\net8.0\ref\RpgApi.dll
+D:\Lucas\RpgApi\obj\Debug\net8.0\RpgApi.sourcelink.json
