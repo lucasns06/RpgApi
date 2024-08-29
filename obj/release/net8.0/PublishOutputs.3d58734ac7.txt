@@ -1,0 +1,12 @@
+D:\Lucas\RpgApi\publish\RpgApi.exe
+D:\Lucas\RpgApi\publish\appsettings.Development.json
+D:\Lucas\RpgApi\publish\appsettings.json
+D:\Lucas\RpgApi\publish\RpgApi.dll
+D:\Lucas\RpgApi\publish\RpgApi.deps.json
+D:\Lucas\RpgApi\publish\RpgApi.runtimeconfig.json
+D:\Lucas\RpgApi\publish\RpgApi.pdb
+D:\Lucas\RpgApi\publish\Microsoft.AspNetCore.OpenApi.dll
+D:\Lucas\RpgApi\publish\Microsoft.OpenApi.dll
+D:\Lucas\RpgApi\publish\Swashbuckle.AspNetCore.Swagger.dll
+D:\Lucas\RpgApi\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Lucas\RpgApi\publish\Swashbuckle.AspNetCore.SwaggerUI.dll
