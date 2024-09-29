@@ -1,4 +1,6 @@
 # RPG API
+
+## Criando uma API
 Para começar, o comando para criar uma API é 
 ```cmd
 dotnet new webapi 
@@ -9,16 +11,17 @@ Usamos o padrão MVC, em projetos WebAPI
 
 Divide a lógica em três elementos conectados.
 
-O usuário requisita dados de um Controlador, que carrega o Modelo e exibe em uma visualização
+O usuário requisita dados de um Controlador, que carrega o Modelo e exibe em uma visualização, mas como não tem a parte do front end, ele volta geralmente no formato JSON ou XML.
 
-Quando se cria uma api (pelo menos aqui no visual studio), vem com uma controller pronta, de clima, a WeatherForecast.
-para executar, você usa o comando
+Quando você cria uma API no Visual Studio, um controller chamado WeatherForecast vem por padrão. Para executar o projeto, você pode usar o comando:
 ```cmd
 dotnet run
 ```
-Ao dar o comando vai aparecer no terminal um link localhost, se você clicar não vai acontecer nada, porque você tem que colocar uma controller para executar algum comando.
+Ao rodar o comando, aparecerá um link localhost no terminal. 
 
-Você pode usar o Swagger ou o PostMan para testar, ou colocar o controller no link do localhost, depois da barra, tipo:
+Para testar sua API, você pode usar ferramentas como **Swagger** ou **Postman**. 
+
+Para acessar diretamente no navegador, é preciso colocar o nome do controlador na URL, como:
 
 http://localhost:5289/PersonagensExemplo/getAll
 
@@ -106,7 +109,10 @@ using Microsoft.EntityFrameworkCore; //tem que aparecer o using
 
 public class DataContext : DbContext // herança 
 {
+     public DataContext(DbContextOptions<DataContext> options) : base(options) //construtor
+     {
 
+     }
 }
 ```
 
