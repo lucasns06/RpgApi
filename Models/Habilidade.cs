@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 
 namespace RpgApi.Models
 {
-    public class Arma
+    public class Habilidade
     {
         public int Id { get; set; }
-        public string Nome { get; set; } = "";
+        public string Nome { get; set; } = string.Empty;
         public int Dano { get; set; }
-        public Personagem? Personagem { get; set; } = null!;
-        public int PersonagemId { get; set; }    
+        public List<PersonagemHabilidade> PersonagemHabilidades { get; set; } = [];
     }
 }

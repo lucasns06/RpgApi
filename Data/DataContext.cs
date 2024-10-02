@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -20,11 +21,15 @@ namespace RpgApi.Data
         public DbSet<Personagem> TB_PERSONAGENS { get; set; } //configuração de uma tabela tb = tabela;
         public DbSet<Arma> TB_ARMAS { get; set; }
         public DbSet<Usuario> TB_USUARIOS { get; set; }
+        public DbSet<Habilidade> TB_HABILIDADES { get; set; }
+        public DbSet<PersonagemHabilidade> TB_PERSONAGENS_HABILIDADES { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Personagem>().ToTable("TB_PERSONAGENS"); //nome que fica no sql
             modelBuilder.Entity<Arma>().ToTable("TB_ARMAS");
             modelBuilder.Entity<Usuario>().ToTable("TB_USUARIOS");
+            modelBuilder.Entity<Habilidade>().ToTable("TB_HABILIDADES");
+            modelBuilder.Entity<PersonagemHabilidade>().ToTable("TB_PERSONAGENS_HABILIDADES");
 
             //Relacionamentos
             modelBuilder.Entity<Usuario>()
@@ -32,7 +37,7 @@ namespace RpgApi.Data
             .WithOne(e => e.Usuario)
             .HasForeignKey(e => e.UsuarioId)
             .IsRequired(false);
-
+            //Um para um
             modelBuilder.Entity<Personagem>()
             .HasOne(e => e.Arma)
             .WithOne(e => e.Personagem)
@@ -56,9 +61,31 @@ namespace RpgApi.Data
                 new Arma() { Id = 2, Nome = "Espada", Dano = 33, PersonagemId = 2 },
                 new Arma() { Id = 3, Nome = "Machado", Dano = 31, PersonagemId = 3 },
                 new Arma() { Id = 4, Nome = "Punho", Dano = 30, PersonagemId = 4 },
-                new Arma() { Id = 5, Nome = "Chicote", Dano = 34, PersonagemId = 5},
+                new Arma() { Id = 5, Nome = "Chicote", Dano = 34, PersonagemId = 5 },
                 new Arma() { Id = 6, Nome = "Foice", Dano = 33, PersonagemId = 6 },
-                new Arma() { Id = 7, Nome = "Cajado", Dano = 32, PersonagemId = 7}
+                new Arma() { Id = 7, Nome = "Cajado", Dano = 32, PersonagemId = 7 }
+            );
+            modelBuilder.Entity<PersonagemHabilidade>()
+            .HasKey(ph => new { ph.PersonagemId, ph.HabilidadeId });
+
+            modelBuilder.Entity<Habilidade>().HasData
+            (
+                new Habilidade() { Id = 1, Nome = "Adormecer", Dano = 39 },
+                new Habilidade() { Id = 2, Nome = "Congelar", Dano = 41 },
+                new Habilidade() { Id = 3, Nome = "Hipnotizar", Dano = 37 }
+            );
+
+            modelBuilder.Entity<PersonagemHabilidade>().HasData
+            (
+                new PersonagemHabilidade() { PersonagemId = 1, HabilidadeId = 1 },
+                new PersonagemHabilidade() { PersonagemId = 1, HabilidadeId = 2 },
+                new PersonagemHabilidade() { PersonagemId = 2, HabilidadeId = 2 },
+                new PersonagemHabilidade() { PersonagemId = 3, HabilidadeId = 2 },
+                new PersonagemHabilidade() { PersonagemId = 3, HabilidadeId = 3 },
+                new PersonagemHabilidade() { PersonagemId = 4, HabilidadeId = 3 },
+                new PersonagemHabilidade() { PersonagemId = 5, HabilidadeId = 1 },
+                new PersonagemHabilidade() { PersonagemId = 6, HabilidadeId = 2 },
+                new PersonagemHabilidade() { PersonagemId = 7, HabilidadeId = 3 }
             );
 
             Usuario user = new Usuario();
