@@ -43,7 +43,9 @@ namespace RpgApi.Controllers
             Método do tipo Get com rota GetClerigoMago que remova os personagens que são cavaleiros, exiba a 
             lista decrescente por PontosVida 
             */
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             Personagem pRemove = personagens.Find(p => p.Classe == ClasseEnum.Cavaleiro);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             personagens.Remove(pRemove);
 
             List<Personagem> listaFinal = personagens.OrderByDescending(p => p.PontosVida).ToList();

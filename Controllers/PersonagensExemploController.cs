@@ -79,7 +79,9 @@ namespace RpgApi.Controllers
         [HttpGet("GetRemovendoMago")]
         public IActionResult GetRemovendoMagos()
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             Personagem pRemove = personagens.Find(p => p.Classe == ClasseEnum.Mago);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             personagens.Remove(pRemove);
             return Ok("Personagem removido: " + pRemove.Nome);
         }
@@ -92,7 +94,9 @@ namespace RpgApi.Controllers
         [HttpPut]
         public IActionResult UpdatePersonagem(Personagem p)
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             Personagem personagemAlterado = personagens.Find(pers => pers.Id == p.Id);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             personagemAlterado.Nome = p.Nome;
             personagemAlterado.PontosVida = p.PontosVida;
             personagemAlterado.Forca = p.Forca;

@@ -11,5 +11,7 @@ namespace RpgApi.Models
         public Personagem Personagem { get; set; } = null!;
         public int HabilidadeId { get; set; }
         public Habilidade? Habilidade { get; set; } = null!;
+        
     }
+    
 }

@@ -35,20 +35,54 @@ namespace RpgApi.Controllers
 
                     Habilidade habilidade = await _context.TB_HABILIDADES
                                 .FirstOrDefaultAsync(h => h.Id == novoPersonagemHabilidade.HabilidadeId);
-                    
+                   
                     if (habilidade == null)
                         throw new System.Exception("Habilidade não encontrada.");
 
                     PersonagemHabilidade ph = new PersonagemHabilidade();
                     ph.Personagem = personagem;
                     ph.Habilidade= habilidade;
-
-                    
+                    await _context.TB_PERSONAGENS_HABILIDADES.AddAsync(ph);
+                    int linhasAfetadas = await _context.SaveChangesAsync();
+                    return Ok(linhasAfetadas);
             }
             catch (System.Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("{personagemId}")]
+        public async Task<IActionResult> GetHabilidadesPersonagem(int personagemId)
+        {
+            try
+            {
+                List<PersonagemHabilidade> phLista = new List<PersonagemHabilidade>();
+                phLista = await _context.TB_PERSONAGENS_HABILIDADES
+                .Include(p => p.Personagem)
+                .Include(p => p.Habilidade)
+                .Where(p => p.Personagem.Id == personagemId).ToListAsync();
+                return Ok(phLista);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("GetHabilidades")]
+        public async Task<IActionResult> GetHabilidades()
+        {
+            try
+            {
+                List<Habilidade> habilidades = new List<Habilidade>();
+                habilidades = await _context.TB_HABILIDADES.ToListAsync();
+                return Ok(habilidades);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
     }
 }
