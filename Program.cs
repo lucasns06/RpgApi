@@ -8,7 +8,7 @@ builder.Services.AddDbContext<DataContext>
     options => 
     {
         options.UseSqlServer(builder
-            .Configuration.GetConnectionString("ConexaoLocal"));
+            .Configuration.GetConnectionString("ConexaoSomee"));
     }
 );
 
