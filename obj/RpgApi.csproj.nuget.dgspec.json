@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Lucas\\DS\\RpgApi\\RpgApi.csproj": {}
+    "C:\\Users\\LUCAS\\Desktop\\RpgApi\\RpgApi.csproj": {}
   },
   "projects": {
-    "D:\\Lucas\\DS\\RpgApi\\RpgApi.csproj": {
+    "C:\\Users\\LUCAS\\Desktop\\RpgApi\\RpgApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Lucas\\DS\\RpgApi\\RpgApi.csproj",
+        "projectUniqueName": "C:\\Users\\LUCAS\\Desktop\\RpgApi\\RpgApi.csproj",
         "projectName": "RpgApi",
-        "projectPath": "D:\\Lucas\\DS\\RpgApi\\RpgApi.csproj",
-        "packagesPath": "C:\\Users\\etechas\\.nuget\\packages\\",
-        "outputPath": "D:\\Lucas\\DS\\RpgApi\\obj\\",
+        "projectPath": "C:\\Users\\LUCAS\\Desktop\\RpgApi\\RpgApi.csproj",
+        "packagesPath": "C:\\Users\\LUCAS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LUCAS\\Desktop\\RpgApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\etechas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LUCAS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

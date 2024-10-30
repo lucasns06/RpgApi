@@ -1,85 +1,30 @@
 ﻿BEGIN TRANSACTION;
 GO
 
-ALTER TABLE [TB_PERSONAGENS] ADD [FotoPersonagem] varbinary(max) NULL;
-GO
-
-ALTER TABLE [TB_PERSONAGENS] ADD [UsuarioId] int NULL;
-GO
-
-CREATE TABLE [TB_USUARIOS] (
+CREATE TABLE [TB_ARMAS] (
     [Id] int NOT NULL IDENTITY,
-    [Username] varchar(200) NOT NULL,
-    [PasswordHash] varbinary(max) NULL,
-    [PasswordSalt] varbinary(max) NULL,
-    [Foto] varbinary(max) NULL,
-    [Latitude] float NULL,
-    [Longitude] float NULL,
-    [DataAcesso] datetime2 NULL,
-    [Perfil] varchar(200) NOT NULL DEFAULT 'Jogador',
-    [Email] varchar(200) NULL,
-    CONSTRAINT [PK_TB_USUARIOS] PRIMARY KEY ([Id])
+    [Nome] varchar(200) NOT NULL,
+    [Dano] int NOT NULL,
+    CONSTRAINT [PK_TB_ARMAS] PRIMARY KEY ([Id])
 );
 GO
 
-UPDATE [TB_PERSONAGENS] SET [FotoPersonagem] = NULL, [UsuarioId] = 1
-WHERE [Id] = 1;
-SELECT @@ROWCOUNT;
-
-GO
-
-UPDATE [TB_PERSONAGENS] SET [FotoPersonagem] = NULL, [UsuarioId] = 1
-WHERE [Id] = 2;
-SELECT @@ROWCOUNT;
-
-GO
-
-UPDATE [TB_PERSONAGENS] SET [FotoPersonagem] = NULL, [UsuarioId] = 1
-WHERE [Id] = 3;
-SELECT @@ROWCOUNT;
-
-GO
-
-UPDATE [TB_PERSONAGENS] SET [FotoPersonagem] = NULL, [UsuarioId] = 1
-WHERE [Id] = 4;
-SELECT @@ROWCOUNT;
-
-GO
-
-UPDATE [TB_PERSONAGENS] SET [FotoPersonagem] = NULL, [UsuarioId] = 1
-WHERE [Id] = 5;
-SELECT @@ROWCOUNT;
-
-GO
-
-UPDATE [TB_PERSONAGENS] SET [FotoPersonagem] = NULL, [UsuarioId] = 1
-WHERE [Id] = 6;
-SELECT @@ROWCOUNT;
-
-GO
-
-UPDATE [TB_PERSONAGENS] SET [FotoPersonagem] = NULL, [UsuarioId] = 1
-WHERE [Id] = 7;
-SELECT @@ROWCOUNT;
-
-GO
-
-IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'DataAcesso', N'Email', N'Foto', N'Latitude', N'Longitude', N'PasswordHash', N'PasswordSalt', N'Perfil', N'Username') AND [object_id] = OBJECT_ID(N'[TB_USUARIOS]'))
-    SET IDENTITY_INSERT [TB_USUARIOS] ON;
-INSERT INTO [TB_USUARIOS] ([Id], [DataAcesso], [Email], [Foto], [Latitude], [Longitude], [PasswordHash], [PasswordSalt], [Perfil], [Username])
-VALUES (1, NULL, 'seuEmail@gmail.com', NULL, -23.520024100000001E0, -46.596497999999997E0, 0xA7861F743FF81E27530AF6FFD614FC0337E7ABC55D7EC81EB51B4BFD3CF88F418A994102D237ADAD198B91679ACF5F658891E54FFFA18F062C4189EA039D52E9, 0x2578D2373F04BE81CD0D1653F29DE4612FC05ACBC72ED351023560A432D7C99CCACEFA908DA3C661C37278B34F64D3F6BE696786E451E8797FA7C93EF7798F53FE85A0CF47DFFCD571F973D3B54670B9E8F51674C137D09F2B4218DA92D3C4FFFDFEC98FA7E09882763CE2451719B13AFC8A44B183EBC0A6E53016A614ECEC98, 'Admin', 'UsuarioAdmin');
-IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'DataAcesso', N'Email', N'Foto', N'Latitude', N'Longitude', N'PasswordHash', N'PasswordSalt', N'Perfil', N'Username') AND [object_id] = OBJECT_ID(N'[TB_USUARIOS]'))
-    SET IDENTITY_INSERT [TB_USUARIOS] OFF;
-GO
-
-CREATE INDEX [IX_TB_PERSONAGENS_UsuarioId] ON [TB_PERSONAGENS] ([UsuarioId]);
-GO
-
-ALTER TABLE [TB_PERSONAGENS] ADD CONSTRAINT [FK_TB_PERSONAGENS_TB_USUARIOS_UsuarioId] FOREIGN KEY ([UsuarioId]) REFERENCES [TB_USUARIOS] ([Id]);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Dano', N'Nome') AND [object_id] = OBJECT_ID(N'[TB_ARMAS]'))
+    SET IDENTITY_INSERT [TB_ARMAS] ON;
+INSERT INTO [TB_ARMAS] ([Id], [Dano], [Nome])
+VALUES (1, 35, 'Arco e Flecha'),
+(2, 33, 'Espada'),
+(3, 31, 'Machado'),
+(4, 30, 'Punho'),
+(5, 34, 'Chicote'),
+(6, 33, 'Foice'),
+(7, 32, 'Cajado');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Dano', N'Nome') AND [object_id] = OBJECT_ID(N'[TB_ARMAS]'))
+    SET IDENTITY_INSERT [TB_ARMAS] OFF;
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20240926010001_MigracaoUsuario', N'8.0.8');
+VALUES (N'20240925231644_MigracaoArma', N'8.0.8');
 GO
 
 COMMIT;
