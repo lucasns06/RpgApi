@@ -14,6 +14,16 @@ builder.Services.AddDbContext<DataContext>
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowGitHubPages", builder =>
+    {
+        builder.WithOrigins("https://lucasns06.github.io")  
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
@@ -23,6 +33,8 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
     );
 
 var app = builder.Build();
+
+app.UseCors("AllowGitHubPages");  
 
 // Configure the HTTP request pipeline.clear
 if (app.Environment.IsDevelopment())
