@@ -1,6 +1,10 @@
 # API de RPG
 
-Esta é uma API de RPG criada em C# utilizando .NET 8. A API permite gerenciar personagens, habilidades, disputas e armas em um jogo de RPG.
+Esta é uma API de RPG criada em C# utilizando .NET 8. 
+
+A API permite gerenciar personagens, habilidades, disputas e armas em um jogo de RPG.
+
+Com uma Autenticação de Usuarios via Tokens
 
 ## Tecnologias Utilizadas
 

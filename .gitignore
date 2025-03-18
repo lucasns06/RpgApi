@@ -482,3 +482,6 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+obj/Debug/net8.0/RpgApi.AssemblyInfo.cs
+obj/Debug/net8.0/RpgApi.AssemblyInfoInputs.cache
+obj
