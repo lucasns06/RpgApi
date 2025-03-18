@@ -1,3 +1,7 @@
+<p align="center">
+   <img width="500em" src="https://github.com/user-attachments/assets/586ff36f-0202-4a1c-8455-da00697ffc34">
+</p>
+
 # API de RPG
 
 Esta é uma API de RPG criada em C# utilizando .NET 8. 
