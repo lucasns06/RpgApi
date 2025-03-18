@@ -13,14 +13,14 @@ namespace RpgApi.Controllers
     [Route("[controller]")]
     public class ArmasController : ControllerBase
     {
-        private readonly DataContext _context;
+         private readonly DataContext _context;
 
         public ArmasController(DataContext context)
         {
             _context = context;
         }
 
-        [HttpGet("{id}")] //Buscar pelo id
+         [HttpGet("{id}")] //Buscar pelo id
         public async Task<IActionResult> GetSingle(int id)
         {
             try
@@ -55,21 +55,21 @@ namespace RpgApi.Controllers
         public async Task<IActionResult> Add(Arma novaArma)
         {
             try
-            {
-                if (novaArma.Dano == 0)
-                    throw new Exception("O Dano da arma não pode ser 0");
+            {               
+                if(novaArma.Dano == 0)
+                  throw new Exception("O Dano da arma não pode ser 0");
 
                 Personagem? p = await _context.TB_PERSONAGENS.FirstOrDefaultAsync(p => p.Id == novaArma.PersonagemId);
-
-                if (p == null)
+                
+                if(p == null)
                     throw new Exception("Não existe personagem com o Id informado.");
 
                 Arma buscaArma = await _context.TB_ARMAS
                     .FirstOrDefaultAsync(a => a.PersonagemId == novaArma.PersonagemId);
 
-                if (buscaArma != null)
+                if(buscaArma != null)
                     throw new Exception("O Personagem selecionado já contém uma arama atribuída a ele.");
-
+                  
                 await _context.TB_ARMAS.AddAsync(novaArma);
                 await _context.SaveChangesAsync();
 
