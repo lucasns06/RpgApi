@@ -70,6 +70,7 @@ namespace RpgApi.Controllers
                 user.PasswordString = string.Empty;
                 user.PasswordHash = hash;
                 user.PasswordSalt = salt;
+                user.Perfil = "Jogador";
                 await _context.TB_USUARIOS.AddAsync(user);
                 await _context.SaveChangesAsync();
 
